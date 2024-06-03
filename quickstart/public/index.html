@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <!-- Font Awesome script -->
+        <script src="https://kit.fontawesome.com/f3dfe7c826.js" crossorigin="anonymous"></script>
+        <script src="./build/twilio-video-processors.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -112,6 +115,35 @@
                 </div>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- Screenshot taken, Added by Rohini -->
+      <div class="modal" id="download-snapshot" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4 class="card-title">Snapshot taken</h4>
+              <img id="imageElement" class="img-fluid" alt="Image">
+            </div>
+            <div class="modal-footer">
+              <button id="downloadBtn" type="button" class="btn btn-primary">Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End-->
+      <div class="col-12 text-center">
+        <button id="screenShare" class="button-1">Share Your Screen</button>
+        <button id="takesnapshot" class="button-1">Take a Video Snapshot</button>
+        <!-- Audi/Video controller-->
+        <button id="muteAudio" class="btn" style="background-image: linear-gradient(-180deg, #37ADB2, #329CA0);box-shadow: 0 0 0 0.2rem #fff;"><i class="fa-solid fa-microphone" aria-hidden="true"></i></button>
+        <div class="btn-group">
+          <button id="muteVideo" class="btn" style="background-image: linear-gradient(-180deg, #37ADB2, #329CA0);box-shadow: 0 0 0 0.2rem #fff;"><i class="fa-solid fa-video" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>

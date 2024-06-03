@@ -8,6 +8,9 @@ const $room = $('#room');
 const $activeParticipant = $('div#active-participant > div.participant.main', $room);
 const $activeVideo = $('video', $activeParticipant);
 const $participants = $('div#participants', $room);
+const { takeSnapshot } = require('./helperJs_files/helper_Screenshot');
+const { shareScreenHandler } = require('./helperJs_files/helper_Screenshare');
+const { muteYourAudio, unmuteYourAudio, muteYourVideo, unmuteYourVideo } = require('./helperJs_files/helper_Audio_Video_Controller');
 
 // The current active Participant in the Room.
 let activeParticipant = null;
@@ -15,6 +18,46 @@ let activeParticipant = null;
 // Whether the user has selected the active Participant by clicking on
 // one of the video thumbnails.
 let isActiveParticipantPinned = false;
+
+/*-------------------- Start Take Snapshot --------------------------*/
+var snapshotBtn = document.getElementById('takesnapshot');
+snapshotBtn.onclick = function() {
+  takeSnapshot(window.room);
+};
+/*-------------------- End Take Snapshot ---------------------------*/
+/*-------------------- Start Screen Share --------------------------*/
+
+var screenShareBtn = document.getElementById('screenShare');
+screenShareBtn.onclick = function() {
+  //sharingScreeen(window.room, screenShareBtn);
+  shareScreenHandler(window.room, screenShareBtn);
+};
+
+/*-------------------- End Screen Share ---------------------------*/
+
+/*-------------------- Start Media Controls --------------------------*/
+var muteAudioBtn = document.querySelector('button#muteAudio');
+var muteVideoBtn = document.querySelector('button#muteVideo');
+
+muteAudioBtn.onclick = () => {
+  const mute = !muteAudioBtn.classList.contains('muted');
+  if(mute) {
+    muteYourAudio(room, muteAudioBtn);
+  }else{
+    unmuteYourAudio(room, muteAudioBtn);
+  }
+}
+
+muteVideoBtn.onclick = () => {
+  const mute = !muteVideoBtn.classList.contains('muted');
+  if(mute) {
+    muteYourVideo(room, muteVideoBtn);
+  }else{
+    unmuteYourVideo(room, muteVideoBtn);
+  }
+}
+/*-------------------- End Media Controls --------------------------*/
+
 
 /**
  * Set the active Participant's video.
